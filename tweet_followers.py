@@ -11,9 +11,10 @@ auth.set_access_token(access_key, access_secret)
 api = tweepy.API(auth)
 
 term = input()
+num = input()
 
-def tweetfollow(word):
-    tweets = api.search_tweets(q=word, result_type='popular', lang='en', count=5)
+def tweetfollow(word,n):
+    tweets = api.search_tweets(q=word, result_type='popular', lang='en', count=n)
     DF = pd.DataFrame(columns=['tweet_no', 'screen_name', 'id'])
     i = 1
 
@@ -34,4 +35,4 @@ def tweetfollow(word):
     DF.to_csv(filename)
     return
 
-tweetfollow(term)
+tweetfollow(term,num)
